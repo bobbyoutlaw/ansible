@@ -14,11 +14,6 @@ RUN git submodule update --init
 ENV PATH /opt/ansible/ansible/bin:/bin:/usr/bin:/sbin:/usr/sbin
 ENV PYTHONPATH /opt/ansible/ansible/lib
 ENV ANSIBLE_LIBRARY /opt/ansible/ansible/library
-RUN ssh-keygen -q -t rsa1 -N '' -f /etc/ssh/ssh_host_key && \
-    ssh-keygen -q -t dsa -N '' -f /etc/ssh/ssh_host_dsa_key && \
-    ssh-keygen -q -t rsa -N '' -f /etc/ssh/ssh_host_rsa_key && \
-    ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && \
-    cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
-    for key in /etc/ssh/ssh_host_*_key.pub; do echo "localhost $(cat ${key})" >> /root/.ssh/known_hosts; done
+
     
     

@@ -7,9 +7,9 @@ RUN apt-key adv \
     --keyserver keyserver.ubuntu.com \
     --recv 6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
 RUN mkdir /etc/ansible/
+RUN mkdir /opt/ansible/
 RUN echo '[local]\nlocalhost          ansible_connection=local\n' > /etc/ansible/hosts
 RUN echo '[defaults]\nhostfile = /etc/ansible/hosts\nhost_key_checking=False\ntimeout = 5\n' > /opt/ansible/ansible.cfg
-RUN mkdir /opt/ansible/
 RUN git clone http://github.com/ansible/ansible.git /opt/ansible/ansible
 WORKDIR /opt/ansible/ansible
 RUN git submodule update --init
